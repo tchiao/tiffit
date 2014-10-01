@@ -2,5 +2,4 @@
 
 Made by yours truly with the help of my mentor.
 
-Created by [Bloc](http://bloc.io)
-
+Project created by [Bloc](http://bloc.io)
