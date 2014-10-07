@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(params.require(:topic).permt(:name, :description, :public))
+    @topic = Topic.new(params.require(:topic).permit(:name, :description, :public))
     authorize @topic
     if @topic.save
       flash[:notice] = "Topic was created."
