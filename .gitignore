@@ -22,4 +22,6 @@
 config/secrets.yml
 
 # Carrierwave image
-public/uploads
+public/uploads.env
+
+.env

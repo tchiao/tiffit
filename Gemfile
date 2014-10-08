@@ -5,10 +5,12 @@ gem 'rails', '4.1.5'
 group :production do
     gem 'pg'
     gem 'rails_12factor'
+    gem 'unicorn'
 end
 
 group :development do
     gem 'sqlite3'
+    gem 'thin'
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
