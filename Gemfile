@@ -26,3 +26,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pundit'
 gem 'redcarpet'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
