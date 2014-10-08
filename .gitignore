@@ -20,3 +20,6 @@
 
 # Ignore randomly generated security tokens
 config/secrets.yml
+
+# Carrierwave image
+public/uploads

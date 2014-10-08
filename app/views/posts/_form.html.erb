@@ -21,6 +21,18 @@
                 </div>
             <% end %>
 
+            <% if post.image? %>
+            <div class="form-group">
+                <%= image_tag(post.image.url) %>
+            </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+                <%= f.hidden_field :image_cache %>
+            </div>
+
             <%= form_group_tag(post.errors[:title]) do %>
                 <%= f.label :title %>
                 <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
