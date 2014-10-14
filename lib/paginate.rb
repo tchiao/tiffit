@@ -2,11 +2,12 @@ module Paginate
 
   extend ActiveSupport::Concern
 
+
   module ClassMethods
 
     # returns specified subset of posts/topics
     def paginate(options)
-      coll = self.all.limit(options[:per_page]).offset(options[:page] || * options[:per_page])
+      coll = self.all.limit(options[:per_page]).offset( nil || (options[:page] - 1) * options[:per_page])
       coll.instance_variable_set(:@page, options[:page])
       coll.instance_variable_set(:@per_page, options[:per_page])
       coll.instance_variable_set(:@pages, (self.count / options[:per_page]).ceil)
@@ -20,6 +21,7 @@ module Paginate
     # generates HTML to link between posts
     def will_paginate(collection)
       total_pages = collection.instance_variable_get(:@pages)
+      
       return total_pages
       #return nil if total_pages = 1
       #{}"total_pages"

@@ -19,4 +19,16 @@
       <p><%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-info' %></p>
     <% end %>
   </div>
+
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Comments</h2>
+    <% if policy(@comments).create? %>
+      <p><%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comments: @comments } %></p>
+    <% end %>
+    <%= render partial: 'comments/comment', collection: @comments %>
+  </div>
+</div>
+

@@ -1,6 +1,35 @@
 require 'faker'
 
-# Create users
+# Create admin
+admin = User.new(
+  name: 'Admin User',
+  email: 'admin@tiffit.com',
+  password: 'helloworld',
+  role: 'admin'
+)
+admin.skip_confirmation!
+admin.save!
+
+# Create moderator
+moderator = User.new(
+  name: 'Moderator User',
+  email: 'mod@tiffit.com',
+  password: 'helloworld',
+  role: 'moderator'
+)
+moderator.skip_confirmation!
+moderator.save!
+
+# Create member
+member = User.new(
+  name: 'Member User',
+  email: 'member@tiffit.com',
+  password: 'helloworld'
+)
+member.skip_confirmation!
+member.save!
+
+# Create more users
 5.times do
   user = User.new(
     name: Faker::Name.name,
@@ -32,42 +61,14 @@ topics = Topic.all
 end
 posts = Post.all
 
+# Create comments
 100.times do
   Comment.create!(
-    # user: :users.sample,
+    user: users.sample,
     post: posts.sample,
     body: Faker::Lorem.paragraph
   )
 end
-
-# Create admin
-admin = User.new(
-  name: 'Admin User',
-  email: 'admin@tiffit.com',
-  password: 'helloworld',
-  role: 'admin'
-)
-admin.skip_confirmation!
-admin.save!
-
-# Create moderator
-moderator = User.new(
-  name: 'Moderator User',
-  email: 'mod@tiffit.com',
-  password: 'helloworld',
-  role: 'moderator'
-)
-moderator.skip_confirmation!
-moderator.save!
-
-# Create member
-member = User.new(
-  name: 'Member User',
-  email: 'member@tiffit.com',
-  password: 'helloworld'
-)
-member.skip_confirmation!
-member.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"
