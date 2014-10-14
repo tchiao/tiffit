@@ -2,7 +2,7 @@
 <em><%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago</em>
 
 <% if policy(comment).destroy? %>
-| <%= link_to "delete", [@topic, @post, comment], method: :delete %>
+| <%= link_to "delete", [@post, comment], method: :delete %>
 <% end %>
 
 <small>
