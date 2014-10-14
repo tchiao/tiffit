@@ -1,61 +1,33 @@
 module Paginate
-
   extend ActiveSupport::Concern
 
-
   module ClassMethods
-
     # returns specified subset of posts/topics
     def paginate(options)
-      coll = self.all.limit(options[:per_page]).offset( nil || (options[:page] - 1) * options[:per_page])
+      coll = self.all.limit(options[:per_page]).offset( nil || (options[:page].to_i - 1) * options[:per_page])
       coll.instance_variable_set(:@page, options[:page])
       coll.instance_variable_set(:@per_page, options[:per_page])
-      coll.instance_variable_set(:@pages, (self.count / options[:per_page]).ceil)
+      coll.instance_variable_set(:@pages, (self.all.count.to_f / options[:per_page]).ceil)
       coll
     end
-
   end
 
   module Helpers
-
     # generates HTML to link between posts
     def will_paginate(collection)
       total_pages = collection.instance_variable_get(:@pages)
-      
-      return total_pages
-      #return nil if total_pages = 1
-      #{}"total_pages"
-      #total_pages.each do |page|
-      #  content_tag :a
+      current_url = url_for(:only_path => false)
 
-      #  "<%= link_to page, topic_posts_path %>"
-      #end
-      
+      return nil if total_pages == 1
+      array = []
+      1.upto(total_pages) do |num|
+        array << link_to(num, (current_url + "?page=" + num.to_s))
+      end
+      array.join(" ").html_safe      
     end
-
   end
-
 end
-
 
 # @posts = Post.paginate(:page => params[:page])
 # will_paginate @posts
-# Post.paginate(:page => params[:page], :per_page => 30)
-
-# options[:page]
-
-# # for the Post model
-# class Post
-#   self.per_page = 10
-# end
-
-# # set per_page globally
-# WillPaginate.per_page = 10
-
-# module WillPaginate
-
-
-# num_hash = {a: 1, b: 2, c: 3, d: 4}
-# num_hash.fetch(:a)
-# page_hash = {:page => params[:page]}
-# page_hash.fetch(:page)
+# @posts = Post.paginate(:page => params[:page], :per_page => 30)

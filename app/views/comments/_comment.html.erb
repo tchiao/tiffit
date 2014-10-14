@@ -1,7 +1,9 @@
-<em>
-  <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
-  <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
-</em>
+<%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
+<em><%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago</em>
+
+<% if policy(comment).destroy? %>
+| <%= link_to "delete", [@topic, @post, comment], method: :delete %>
+<% end %>
 
 <small>
   <p><%= comment.body %></p>

@@ -16,14 +16,19 @@
 
   <div class="col-md-4">
     <% if policy(@post).update? %>
-      <p><%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-info' %></p>
+      <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-info' %>
     <% end %>
+
+    <% if policy(@post).destroy? %>
+    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
+    <% end %>
+
   </div>
 
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <h2>Comments</h2>
     <% if policy(@comments).create? %>
       <p><%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comments: @comments } %></p>
