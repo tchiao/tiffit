@@ -41,28 +41,31 @@ member.save!
 end
 users = User.all
 
+topic_array = ["Astounding Adventures", "Baleful Books", "Calamitous Conspiracies", "Delirious Daydreams", "Exuberant Events", "Fantastical Fairytales", "Glowing Gems", "Historical Heroes", "Invigorating Intrigues", "Jocular Jokes", "Key Knowledge", "Long-Standing Lore", "Meritorious Morals", "Newfangled Novels", "Opulent Overtones", "Pretentious Plays", "Quixotic Quotes", "Resplendent Recipes", "Sensible Subjects", "Thrilling Tales", "Unheard-of Utopias", "Venerable Voyages", "Wondrous Wanderers", "Xeric Xenoliths", "Yesteryear Youths", "Zealous Zephyrs"]
 # Create topics
-15.times do
+topic_array.each do |title|
   topic = Topic.create!(
-    name: Faker::Lorem.sentence,
+    name: title,
     description: Faker::Lorem.paragraph
   )
 end
 topics = Topic.all
 
 # Create posts
-50.times do
-  Post.create!(
+75.times do
+  post = Post.create!(
     user: users.sample,
     topic: topics.sample,
     title: Faker::Lorem.sentence,
     body:  Faker::Lorem.paragraph
   )
+  post.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
+  post.update_rank
 end
 posts = Post.all
 
 # Create comments
-100.times do
+150.times do
   Comment.create!(
     user: users.sample,
     post: posts.sample,
