@@ -42,7 +42,7 @@
   <div class="col-md-5">
     <h2>Comments</h2>
     <% if policy(@comments).create? %>
-      <p><%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comments: @comments } %></p>
+      <p><%= render partial: 'comments/form', locals: { post: @post, comment: @comment } %></p>
     <% end %>
     <%= render partial: 'comments/comment', collection: @comments %>
   </div>
