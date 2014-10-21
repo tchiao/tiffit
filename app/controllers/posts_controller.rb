@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.all
     @comment = @post.comments.new
+    authorize @topic
   end
 
   def new
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
     @post.topic = @topic
     authorize @post
     if @post.save
-      post.create_vote
+      @post.create_vote
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
     else

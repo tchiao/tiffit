@@ -35,6 +35,7 @@ gem 'spring',        group: :development
 gem 'pundit'
 gem 'pry'
 gem 'redcarpet'
+gem 'quiet_assets'
 
 gem 'carrierwave'
 gem 'mini_magick'
