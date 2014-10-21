@@ -17,6 +17,7 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'capybara'
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -35,6 +36,7 @@ gem 'spring',        group: :development
 gem 'pundit'
 gem 'pry'
 gem 'redcarpet'
+gem 'quiet_assets'
 
 gem 'carrierwave'
 gem 'mini_magick'

@@ -4,16 +4,28 @@ describe VotesController do
   include TestFactories
   include Devise::TestHelpers
 
-  describe '#up_vote' do
-    it "adds an upvote to the post" do
-      request.env["HTTP_REFERER"] = '/'
+  describe "vote methods" do
+    before do
       @user = authenticated_user
-      @post = associated_post
       sign_in @user
+      @post = associated_post
+      request.env["HTTP_REFERER"] = '/'
+    end
 
-      expect {
-        post(:up_vote, post_id: @post.id)
-      }.to change {@post.up_votes }.by 1
+    describe '#up_vote' do
+      it "adds an upvote to the post" do
+        expect {
+          post(:up_vote, post_id: @post.id)
+        }.to change {@post.up_votes}.by 1
+      end
+    end
+
+    describe '#down_vote' do
+      it "adds a downvote to the post" do
+        expect {
+          post(:down_vote, post_id: @post.id)
+        }.to change {@post.down_votes}.by 1
+      end
     end
   end
 end
