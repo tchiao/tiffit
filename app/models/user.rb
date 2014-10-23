@@ -25,4 +25,15 @@ class User < ActiveRecord::Base
     votes.find_by_post_id(post.id)
   end
 
+  def self.top_rated
+    self.select('users.*')                                                        # select all attributes of user
+      .select('COUNT(DISTINCT comments.id) AS comments_count')                    # count comments made by user
+      .select('COUNT(DISTINCT posts.id) AS posts_count')                          # count posts made by users
+      .select('COUNT(DISTINCT comments.id) + COUNT(DISTINCT posts.id) AS rank')   # add comment and post count with rank label
+      .joins(:posts)                                                              # ties posts table to users table via user_id
+      .joins(:comments)                                                           # ties comments table to users table via user_id
+      .group('users.id')                                                          # instructs database to group results so users will be returned in distinct row
+      .order('rank DESC')                                                         # instructs database to order results by rank, descending
+  end
+
 end

@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Top Users</h1>
+    <p class="lead">Are you one of the most active users on Tiffit?</p>
+    <%= render partial: 'users/user', collection: @users %>
+    <%= will_paginate @users %>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
