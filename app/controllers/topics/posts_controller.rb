@@ -1,8 +1,8 @@
 class Topics::PostsController < ApplicationController
 
   def show
-    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @topic = @post.topic
     @comments = @post.comments.all
     @comment = @post.comments.new
     authorize @topic

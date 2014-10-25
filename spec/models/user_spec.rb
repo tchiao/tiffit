@@ -4,9 +4,6 @@ describe User do
 
   describe ".top_rated" do
     before do
-      # @user1 = create(:user)
-      # post = create(:post, user: @user1)
-      # create(:comment, user: @user1, post: post)
       @user1 = create(:user_with_post_and_comment)
       @user2 = create(:user)
       post = create(:post, user: @user2)

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-
+  respond_to :html, :js
+  
   def create
     @comment = current_user.comments.build(comment_params)
     @post = Post.find(params[:post_id])
@@ -15,16 +16,23 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
+    unless current_user
+    #   flash[:notice] = "Sorry, you must be logged in to do that."
+      render js: "window.location.pathname = '#{root_path}'" and return
+    end
 
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     authorize @comment
+
     if @comment.destroy
       flash[:notice] = "Comment was deleted."
-      redirect_to [@post.topic, @post]
     else
       flash[:error] = "There was an error deleting the comment."
-      redirect_to [@post.topic, @post]
+    end
+
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@post.topic, @post] }
     end
   end
 
