@@ -7,6 +7,8 @@ class Comment < ActiveRecord::Base
 
   after_create :send_favorite_emails
 
+  default_scope { order('updated_at DESC') }
+
   def send_favorite_emails
     post.favorites.each do |favorite|
       if should_receive_update_for?(favorite)
