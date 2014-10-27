@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   respond_to :html, :js
-  
+
   def create
     @post = Post.find(params[:post_id])
     @comments = @post.comments
@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
 
   def destroy
     unless current_user
-    #   flash[:notice] = "Sorry, you must be logged in to do that."
+      flash[:notice] = "Sorry, you must be logged in to do that."
+      # flash.keep(:notice)
       render js: "window.location.pathname = '#{root_path}'" and return
     end
 

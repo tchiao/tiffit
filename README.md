@@ -1,4 +1,4 @@
-## Bloccit: A Reddit clone to teach the fundamentals of web development and Rails 4.
+## Tiffit: A Reddit clone demonstrating the fundamentals of web development and Rails 4.
 
 Required environment variables in `config/application.example.yml`
 
