@@ -50,7 +50,7 @@
 }
 
 body {
-  background-color:#f1f1f1;
+  background-color:#f5f5f5;
   color:#595959;
 }
 
@@ -85,7 +85,7 @@ body {
 
 .column-row {
   margin:50px 0;
-  background-color:#f1f1f1;
+  background-color:#f5f5f5;
 }
 
 .column {
@@ -124,11 +124,13 @@ body {
 
 .button:hover {
   background:#595959;
+  color:white;
+  text-decoration:none;
 }
 
 .bttn {
   color: white;
-  background: #1474f7;
+  background: #b4e2ee;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
@@ -141,32 +143,32 @@ body {
 }
 
 .bttn:hover {
-  background:#595959;
+  background:#79c6da;
 }
 
 .bttn-cancel {
-  background:#d95c36;
+  background:#ed7c59;
 }
 
 .bttn-cancel:hover {
-  background:#cf5834;
+  background:#d95c36;
 }
 
 .bttn-favorite {
-  background:#e7b919;
+  background:#f3c366;
   text-underline:none;
 }
 
 .bttn-favorite:hover {
-  background:#dcb018;
+  background:#f4bb4d;
 }
 
 .bttn-white {
-  background:#afafaf;
+  background:#bebebe;
 }
 
-.bttn-white {
-  background:#999999;
+.bttn-white:hover {
+  background:#a5a5a5;
 }
 
 a.bttn {
@@ -179,11 +181,11 @@ a.bttn:hover {
   text-decoration:none;
 }
 
-.nav > li > a, .navbar-nav a, .navbar a, .nav > li, .navbar > li, .navbar-nav > li {
-  background:#1474f7;
+.nav > li > a, .nav > li > a:active, .nav > li > a:focus {
+  background-color:#1474f7;
 }
 
-.nav > li > a:hover, .navbar a:hover, .nav > li:hover, .navbar > li:hover {
+.nav > li > a:hover {
   background:#1474f7;
   color:#e7e7e7;
 }
@@ -197,11 +199,13 @@ a.bttn:hover {
 }
 
 .info-bar a, a {
-  color:#1474f7;
+  color:#79c6da;
+  text-decoration:none;
 }
 
-.info-bar a:hover, a:hover {
+.info-bar a:hover, a:hover, a:active, a:focus {
   color:#595959;
+  text-decoration:none;
 }
 
 .nav-tabs > li > a {
