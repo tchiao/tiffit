@@ -1,9 +1,28 @@
 @import "bootstrap";
 
-.user-info {
-  margin-top: 9px;
+.first-page {
+  background-image: image-url('bg.png');
+  background-repeat:no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  background-position: center 170px;
+  max-width:100%;
+  border-bottom:5px solid #1474f7;
+  height:650px;
+  background-color:#b4e2ee;
+  color:#595959;
 }
 
+.home-bar {
+  background:#b4e2ee;
+  padding:20px;
+}
+
+.info-bar {
+  padding:20px;
+}
 .nav {
   margin-top: 5px;
 }
@@ -28,4 +47,163 @@
 
 .tab-content {
   margin-top: 15px;
+}
+
+body {
+  background-color:#f1f1f1;
+  color:#595959;
+}
+
+.large-block {
+  margin-bottom:50px;
+}
+
+.large-block > h1 {
+  font-size:63px;
+}
+
+.large-block > p {
+  font-size:20px;
+  font-weight:300;
+}
+
+.navbar {
+  background-color:#1474f7;
+  border-radius:0;
+  margin-bottom:0px;
+}
+
+.home-bar a, .nav a {
+  color:white;
+  text-decoration:none;
+}
+
+.home-bar a:hover, .nav a:hover {
+  color:white;
+  text-decoration:none;
+}
+
+.column-row {
+  margin:50px 0;
+  background-color:#f1f1f1;
+}
+
+.column {
+  background-color:white;
+  padding:10px 15px;
+  border-bottom:5px solid #b7e2ee;
+  text-align:center;
+  margin:0 auto;
+  height:200px;
+  color:#595959;
+}
+
+.column > h2 {
+  font-size:25px;
+}
+
+.button {
+  color: white;
+  line-height: 150%;
+  background: #1474f7;
+  padding: 1.2rem 3.5rem;
+  margin: 0 0 1rem 0;
+  border: 0;
+  -webkit-border-radius: 20em;
+  border-radius: 20em;
+  letter-spacing: 1.5px;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  font-size: 1.8rem;
+}
+
+.button:hover {
+  background:#595959;
+}
+
+.bttn {
+  color: white;
+  background: #1474f7;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  padding: 1.2rem 2.5rem;
+  margin: 0 0 1rem 0;
+  border: 0;
+  -webkit-border-radius: 20em;
+}
+
+.bttn:hover {
+  background:#595959;
+}
+
+.bttn-cancel {
+  background:#d95c36;
+}
+
+.bttn-cancel:hover {
+  background:#cf5834;
+}
+
+.bttn-favorite {
+  background:#e7b919;
+  text-underline:none;
+}
+
+.bttn-favorite:hover {
+  background:#dcb018;
+}
+
+.bttn-white {
+  background:#afafaf;
+}
+
+.bttn-white {
+  background:#999999;
+}
+
+a.bttn {
+  color:white;
+  text-decoration:none;
+}
+
+a.bttn:hover {
+  color:white;
+  text-decoration:none;
+}
+
+.nav > li > a, .navbar-nav a, .navbar a, .nav > li, .navbar > li, .navbar-nav > li {
+  background:#1474f7;
+}
+
+.nav > li > a:hover, .navbar a:hover, .nav > li:hover, .navbar > li:hover {
+  background:#1474f7;
+  color:#e7e7e7;
+}
+
+.user-info > a {
+  color:white;
+}
+
+.user-info > a:hover {
+  color:#1474f7;
+}
+
+.info-bar a, a {
+  color:#1474f7;
+}
+
+.info-bar a:hover, a:hover {
+  color:#595959;
+}
+
+.nav-tabs > li > a {
+  border-radius:0;
 }

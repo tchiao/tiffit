@@ -7,23 +7,46 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <nav class="navbar">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Tiffit", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Topics", topics_path %></li>
+          <li><%= link_to "Popular Posts", posts_path %></li>
+          <li><%= link_to "Top Users", users_path %></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <% if @home %>
+    <div class="home-bar">
+  <% else %>
+    <div class="info-bar">
+  <% end %>
   <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Tiffit", root_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Topics", topics_path %></li>
-      <li><%= link_to "Popular Posts", posts_path %></li>
-      <li><%= link_to "Top Users", users_path %></li>
-    </ul>
-  
     <div class="pull-right user-info">
       <% if current_user %>
         <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
         Hello <%= link_to (current_user.name || current_user.email), current_user %>!
-        <%= link_to edit_user_registration_path, class: 'btn btn-info btn-xs' do %>
+        <%= link_to edit_user_registration_path do %>
           <span class="glyphicon glyphicon-user"></span>
-        <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-info btn-xs' do %>
+        <% end %> 
+        <%= link_to destroy_user_session_path, method: :delete do %>
           <span class="glyphicon glyphicon-log-out"></span>
         <% end %>
       <% else %>
@@ -32,7 +55,8 @@
       <% end %>
 
     </div>
-    <br/><br/>
+    </div>
+
     <p id="flash-container">
       <% if flash[:notice] %>
         <div class="alert alert-success">
@@ -51,10 +75,13 @@
         </div>
       <% end %>
     </p>
-
-    <p>
+    </div>
+    <% unless @home %>
+    <div class="container">
+      <% end %>
       <%= yield %>
-    </p>
+    </div>
+      </div>
   </div>
 </body>
 </html>
