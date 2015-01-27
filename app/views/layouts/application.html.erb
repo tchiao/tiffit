@@ -68,7 +68,7 @@
       <% elsif flash[:error] %>
         <div class="alert alert-error">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] unless error.blank? %>
+          <%= flash[:error] %>
         </div>
       <% elsif flash[:alert] %>
         <div class="alert alert-alert">

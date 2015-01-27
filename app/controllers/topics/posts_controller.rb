@@ -20,7 +20,8 @@ class Topics::PostsController < ApplicationController
     @post.topic = @topic
     authorize @post
        
-    if @post.save_with_initial_vote
+    if @post.save
+      @post.create_vote
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
     else
@@ -40,6 +41,7 @@ class Topics::PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
     if @post.update_attributes(post_params)
+      @post.create_vote
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
     else
