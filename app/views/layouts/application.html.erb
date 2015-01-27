@@ -41,8 +41,10 @@
   <div class="container">
     <div class="pull-right user-info">
       <% if current_user %>
+        <% @username = current_user.name %>
+        <% @username = current_user.email if @username == "" %>
         <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
-        Hello <%= link_to (current_user.name || current_user.email), current_user %>!
+        Hello <%= link_to @username, current_user %>!
         <%= link_to edit_user_registration_path do %>
           <span class="glyphicon glyphicon-user"></span>
         <% end %> 
@@ -57,24 +59,24 @@
     </div>
     </div>
 
-    <p id="flash-container">
+    <div id="flash-container">
       <% if flash[:notice] %>
-        <div class="alert alert-success">
+        <div class="alert alert-notice">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
+          <%= flash[:notice] unless notice.blank? %>
         </div>
       <% elsif flash[:error] %>
-        <div class="alert alert-danger">
+        <div class="alert alert-error">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] %>
+          <%= flash[:error] unless error.blank? %>
         </div>
       <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
+        <div class="alert alert-alert">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
+          <%= flash[:alert] unless alert.blank? %>
         </div>
       <% end %>
-    </p>
+    </div>
     </div>
     <% unless @home %>
     <div class="container">

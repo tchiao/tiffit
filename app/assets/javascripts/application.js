@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $('#flash-container').slideUp();
+  }, 1500);
+
+});
+

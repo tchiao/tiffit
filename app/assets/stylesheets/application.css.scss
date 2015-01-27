@@ -50,9 +50,34 @@
 }
 
 body {
-  background-color:#f5f5f5;
+  background-color:#f9f9f9;
   color:#595959;
 }
+
+.alert {
+  margin:0 auto;
+  width:50%;
+  padding:10px;
+  color:white;
+  text-align:center;
+  border-radius:3px;
+}
+
+.alert-notice {
+  background-color:#b4e2ee;
+  border:1px solid #79c6da;
+}
+
+.alert-alert {
+  background-color:#f3c366;
+  border:1px solid #f4bb4d;
+}
+
+ .alert-error {
+  background-color:#ed7c59;
+  border:5px solid #d95c36;
+}
+
 
 .large-block {
   margin-bottom:50px;
